@@ -1,0 +1,51 @@
+version: '2.3'
+
+services:
+  local_redis:
+    build: redis_data/
+    container_name: local_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis_data/:/data
+    networks:
+      - deploy_network
+  local_streaming_fastapi:
+    image: bendirectai/directai:server
+    working_dir: /obfuscated_server
+    command: /bin/bash ./run.sh
+    ports: 
+      - 8000:8000
+    networks:
+      - deploy_network
+    container_name: local_streaming_fastapi
+    environment:
+      - PYTHONUNBUFFERED=1
+      - NVIDIA_VISIBLE_DEVICES=all
+      - HF_HOME=/.cache/huggingface
+    runtime: nvidia
+    env_file:
+      - directai_fastapi/.env
+    volumes:
+      - ./logs:/logs
+    shm_size: 10.24g  # because Ray complains if it's less
+    depends_on:
+      - rtsp_server
+      - local_redis
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+  
+  rtsp_server:
+    image: bluenviron/mediamtx:latest
+    container_name: local_streaming_rtsp_server
+    networks:
+      - deploy_network
+    ports:
+      - 8554:8554
+      - 1935:1935
+      - 8888:8888
+      - 8889:8889
+
+networks:
+  deploy_network:
+    driver: bridge
