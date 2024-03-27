@@ -2,7 +2,7 @@ version: '2.3'
 
 services:
   tests:
-    image: bendirectai/directai:testing
+    image: directai/directai:testing
     working_dir: /obfuscated_tests
     command: python -m unittest tests/test.py
     container_name: local_streaming_tests

@@ -11,7 +11,7 @@ services:
     networks:
       - deploy_network
   local_streaming_fastapi:
-    image: bendirectai/directai:server
+    image: directai/directai:server
     working_dir: /obfuscated_server
     command: /bin/bash ./run.sh
     ports: 
