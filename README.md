@@ -15,11 +15,11 @@ We expect DirectAI's services to be run on an Ubuntu machine with access to an N
     - This is not the access token provided by `https://api.alpha.directai.io/token`. Please reach out to `ben@directai.io` for that token.
 
 ### Running DirectAI on your Machine
-- Pull the server image: `docker pull bendirectai/directai:server`
+- Pull the server image: `docker pull directai/directai:server`
 - Run the image as a container: `docker-compose up`
 
 ### Integration Testing DirectAI on your Machine
-- Pull the testing image: `docker pull bendirectai/directai:testing`
+- Pull the testing image: `docker pull directai/directai:testing`
 - Run the image as a container: `docker-compose -f docker-compose-testing.yml up`
 - This will not be necessary in a standard run although DirectAI engineers may ask for the log results in the event of a debug session.
 
