@@ -11,7 +11,8 @@ We expect DirectAI's services to be run on an Ubuntu machine with access to an N
 - Install docker-compose: `sudo apt-get update && sudo apt-get install docker-compose`
 - Configure NVIDIA runtime for docker: `sudo nvidia-ctk runtime configure --runtime=docker` 
 - Restart Docker: `sudo systemctl restart docker`
-- Authenticate via DirectAI-provided Docker Access Token: `docker login ${ACCESS_TOKEN}`
+- Authenticate via DirectAI-provided Docker Access Token: `docker login -u directai`
+    - Provide the access token when prompted for a password.
     - This is not the access token provided by `https://api.alpha.directai.io/token`. Please reach out to `ben@directai.io` for that token.
 
 ### Running DirectAI on your Machine
