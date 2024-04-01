@@ -5,13 +5,12 @@
 [DirectAI Self-Hosted EULA](https://docs.google.com/document/d/1sYmDYExFCIvMqo9ImbZW1GnhbQq8y6W-w_0VkJ6f_l4/edit) is linked for your convenience.
 
 ### Startup
-We expect DirectAI's services to be run on an Ubuntu machine with access to an Nvidia GPU.
-- See `ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20240301` AMI and `g5.2xlarge` instance type.
+We expect DirectAI's services to be run on an Ubuntu machine with access to an Nvidia GPU. See `Deep Learning OSS Nvidia Driver AMI GPU PyTorch 2.1.0 (Ubuntu 20.04) 20240326` AMI and `g5.2xlarge` instance type. We recommend allocating **256GB** of disk space.
 
 - Follow [docker install instructions](https://docs.docker.com/engine/install/ubuntu/)
 - Install docker-compose: `sudo apt-get update && sudo apt-get install docker-compose`
 - Configure NVIDIA runtime for docker: `sudo nvidia-ctk runtime configure --runtime=docker` 
-    - You may have to [install the toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) beforehand.
+    - If you don't have the correct AMI, you may have to [install the toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) and drivers `sudo apt-get install -y nvidia-driver-535 nvidia-utils-535-server` beforehand. Don't forget to reboot in this case.
 - Restart Docker: `sudo systemctl restart docker`
 - Authenticate via DirectAI-provided Docker Access Token: `docker login -u directai`
     - Provide the access token when prompted for a password.
@@ -20,7 +19,6 @@ We expect DirectAI's services to be run on an Ubuntu machine with access to an N
 ### Running DirectAI on your Machine
 - Pull the server image: `docker pull directai/directai:server`
 - Run the image as a container: `docker-compose up`
-    - You may have to do further nvidia installs (and reboot afterwards) to get this working: `sudo apt-get install -y nvidia-driver-535 nvidia-utils-535-server`
 
 ### Integration Testing DirectAI on your Machine
 - Pull the testing image: `docker pull directai/directai:testing`
