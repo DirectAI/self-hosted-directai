@@ -28,7 +28,7 @@ services:
       - directai_fastapi/.env
     volumes:
       - ./logs:/logs
-    shm_size: 10.24g  # because Ray complains if it's less
+    shm_size: 10240M  # because Ray complains if it's less
     depends_on:
       - rtsp_server
       - local_redis
