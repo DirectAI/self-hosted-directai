@@ -8,6 +8,8 @@ services:
     container_name: local_streaming_tests
     networks:
       - deploy_network
+    volumes:
+      - ./logs:/logs
     extra_hosts:
     - "host.docker.internal:host-gateway"
 
