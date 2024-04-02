@@ -5,7 +5,7 @@
 [DirectAI Self-Hosted EULA](https://docs.google.com/document/d/1sYmDYExFCIvMqo9ImbZW1GnhbQq8y6W-w_0VkJ6f_l4/edit) is linked for your convenience.
 
 ### Startup
-We expect DirectAI's services to be run on an Ubuntu machine with access to an Nvidia GPU. See `Deep Learning OSS Nvidia Driver AMI GPU PyTorch 2.1.0 (Ubuntu 20.04) 20240326` AMI and `g5.2xlarge` instance type. We recommend allocating **256GB** of disk space.
+We expect DirectAI's services to be run on an Ubuntu machine with access to an Nvidia GPU. See `Deep Learning OSS Nvidia Driver AMI GPU PyTorch 2.1.0 (Ubuntu 20.04) 20240326` AMI and `g5.2xlarge`/`g4dn.xlarge` instance types. We recommend allocating **256GB** of disk space.
 
 - Follow [docker install instructions](https://docs.docker.com/engine/install/ubuntu/)
 - Install docker-compose: `sudo apt-get update && sudo apt-get install docker-compose`
